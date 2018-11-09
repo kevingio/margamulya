@@ -104,6 +104,23 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="tab-pane" id="tab-organisasi">
+                                    <div class="card">
+                                        <img class="card-img-top" src="{{ asset('app-asset/img/bible.jpeg') }}" alt="bible">
+                                        <div class="card-body">
+                                            <div class="card-title text-dark text-center my-5">
+                                                <h3 class="font-weight-bold">Struktur Organisasi Kantor Majelis Jemaat</h3>
+                                                <h4>Gereja Protestan di Indonesia Bagian Barat (GPIB)</h4>
+                                                <h4>Marga Mulya Yogyakarta</h4>
+                                                <h4>(Sesuai Peraturan Nomor 11 GPIB Tahun 2015)</h4>
+                                            </div>
+                                            <div class="card-content mb-5 text-justify">
+                                                @include('web.about.margamulya.struktur-organisasi')
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -122,6 +122,7 @@ $(document).ready(function () {
 									text: "Poof! Your photo has been set as a thumbnail!",
 									icon: "success"
 								});
+								photoPage.dtTable.ajax.reload(null, false);
 						    }
 						});
 				  	}
