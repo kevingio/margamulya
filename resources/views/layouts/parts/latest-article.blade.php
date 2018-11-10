@@ -36,7 +36,14 @@
                     <div class="side_post">
                         <a href="{{ route('show-article', [$article->id]) }}">
                             <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
-                                <div class="side_post_image"><div><img src="{{ asset('app-asset/img/top_1.jpg') }}" class="rounded" alt=""></div></div>
+                                <div class="side_post_image">
+                                    <div>
+                                        @if(empty($article->background_img))
+                                        <img src="{{ asset('app-asset/img/top_1.jpg') }}" class="rounded" alt="">
+                                        @else
+                                        <img src="{{ $article->background_img }}" class="rounded" alt="">
+                                        @endif
+                                    </div></div>
                                 <div class="side_post_content">
                                     <div class="side_post_title mt-2">{{ $article->title }}</div>
                                     <small class="post_meta">{{ $article->user->name }}<span>{{ $article->created_at->diffForHumans() }}</span></small>

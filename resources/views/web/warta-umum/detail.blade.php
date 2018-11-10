@@ -6,7 +6,7 @@
 
 @section('content')
 <div class="home">
-    <div class="home_background parallax-window" data-parallax="scroll" data-image-src="{{ asset('app-asset/img/post.jpg') }}" data-speed="0.8"></div>
+    <div class="home_background parallax-window" data-parallax="scroll" data-image-src="{{ asset('app-asset/img/category.jpg') }}" data-speed="0.8"></div>
     <div class="home_content">
         <a href="{{ url('warta-umum') }}" class="tag">Warta Umum</a>
         <div class="post_title">{{ $warta->title }}</div>

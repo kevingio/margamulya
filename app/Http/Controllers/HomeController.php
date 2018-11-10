@@ -22,7 +22,13 @@ class HomeController extends Controller
      */
     public function __construct(Article $article, Jemaat $jemaat, Calendar $calendar, Warta $warta, File $file, ArticleView $article_view, Agent $agent)
     {
-        $this->latest_articles = $article->with('user')->orderBy('created_at', 'desc')->take(15)->get();
+        $articles = $article->with('user')->orderBy('created_at', 'desc')->take(15)->get();
+        foreach ($articles as $article) {
+            if(!empty($article->background_img)) {
+                $article->background_img = Storage::url($article->background_img);
+            }
+        }
+        $this->latest_articles = $articles;
         $this->calendars = $calendar->where('date', '>=', date('Y-m-d'))->take(15)->get();
         $this->article = $article;
         $this->warta = $warta;
@@ -59,6 +65,7 @@ class HomeController extends Controller
             $file->filename = $temp[1];
             $file->thumbnail = "https://img.youtube.com/vi/".$temp[1]."/2.jpg";
         }
+
         return view('web.home.index')
                 ->with('latest_articles', $this->latest_articles)
                 ->with('calendars', $this->calendars)

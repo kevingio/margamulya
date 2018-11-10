@@ -1,5 +1,5 @@
 <img src="{{ asset('app-asset/img/struktur-organisasi.png') }}" class="img-fluid" alt="">
-<div class="mt-5">
+<!-- <div class="mt-5">
     <h4 class="font-weight-bold text-dark text-center mb-5">TUGAS, WEWENANG DAN TANGGUNG JAWAB PEGAWAI KANTOR MAJELIS JEMAAT</h4>
     <h5 class="font-weight-bold text-dark">1. KEPALA KANTOR</h5>
     <ol class="ml-5" type="a">
@@ -46,4 +46,4 @@
             </ol>
         </div>
     </div>
-</div>
+</div> -->

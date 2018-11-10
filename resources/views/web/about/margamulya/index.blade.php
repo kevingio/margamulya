@@ -63,7 +63,7 @@
                                         <img class="card-img-top" src="{{ asset('app-asset/img/bible.jpeg') }}" alt="bible">
                                         <div class="card-body">
                                             <div class="card-title text-dark text-center my-5">
-                                                <h3 class="font-weight-bold">Pendeta Majelis Umat</h3>
+                                                <h3 class="font-weight-bold">Pendeta Jemaat</h3>
                                                 <h4>Gereja Protestan di Indonesia Bagian Barat (GPIB)</h4>
                                             </div>
                                             <div class="card-content mb-5">
