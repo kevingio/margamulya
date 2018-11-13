@@ -52,7 +52,7 @@
                                 </div>
                                 <div class="tab-pane" id="tab-pelkat">
                                     <div class="card">
-                                        <img class="card-img-top" src="{{ asset('app-asset/img/bible.jpeg') }}" alt="bible">
+                                        <img class="card-img-top" src="{{ asset('app-asset/img/Logo Pelkat.jpg') }}" alt="bible">
                                         <div class="card-body">
                                             <div class="card-title text-dark text-center my-5">
                                                 <h3 class="font-weight-bold">Pengurus Pelkat</h3>

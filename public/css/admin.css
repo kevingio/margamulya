@@ -33106,3 +33106,37 @@ iframe.video-preview, div[aria-label='Showing viewer.'] {
 .contact-dev span {
     font-weight: 670;
 }
+
+.file-upload {
+    display: none;
+}
+.circle {
+    border-radius: 100% !important;
+}
+.circle img {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+}
+.p-image {
+    position: absolute;
+    top: 50%;
+    right: 30px;
+    color: #666666;
+    transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+}
+.p-image:hover {
+    transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+}
+.upload-button {
+    font-size: 1.2em;
+}
+
+.upload-button:hover {
+    transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+    color: #999;
+}
+
+.sidebar .nav .nav-item.nav-profile .nav-link .user-wrapper .profile-image img {
+    height: 100%;
+}

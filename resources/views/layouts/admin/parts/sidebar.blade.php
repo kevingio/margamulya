@@ -4,7 +4,11 @@
             <div class="nav-link">
                 <div class="user-wrapper">
                     <div class="profile-image">
-                        <img src="{{ asset('admin-asset/img/faces/face1.jpg') }}" alt="profile image">
+                        @if(empty(auth()->user()->avatar))
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd5_kbfqZdTTsP506OSSvpu9A5nU6JgzV-qfrBq_N_513GdBrZ" alt="profile image">
+                        @else
+                        <img src="{{ Storage::url(auth()->user()->avatar) }}" alt="profile image">
+                        @endif
                     </div>
                     <div class="text-wrapper">
                         <p class="profile-name font-weight-bold">{{ Auth::user()->name }}</p>

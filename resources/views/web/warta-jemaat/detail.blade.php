@@ -18,7 +18,15 @@
             <div class="col-lg-9 mb-5">
                 <div class="post_content">
                     <div class="post_panel post_panel_top d-flex flex-row align-items-center justify-content-start">
-                        <div class="author_image"><div><img src="{{ asset('app-asset/img//author.jpg') }}" alt=""></div></div>
+                        <div class="author_image">
+                            <div>
+                                @if(empty($warta->user->avatar))
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd5_kbfqZdTTsP506OSSvpu9A5nU6JgzV-qfrBq_N_513GdBrZ" alt="">
+                                @else
+                                <img src="{{ Storage::url($warta->user->avatar) }}" alt="">
+                                @endif
+                            </div>
+                        </div>
                         <div class="post_meta">{{ $warta->user->name }}<span>{{ date('l, d F Y', strtotime($warta->created_at)) }} at {{ date('H:i', strtotime($warta->created_at)) }}</span></div>
                         <div class="post_share ml-sm-auto">
                             <span>share</span>

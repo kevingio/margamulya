@@ -23,7 +23,11 @@
                 <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown"
                    aria-expanded="false">
                     <span class="profile-text d-none d-lg-inline-block">Hello, {{ Auth::user()->name }} !</span>
-                    <img class="img-xs rounded-circle" src="{{ asset('admin-asset/img/faces/face1.jpg') }}" alt="Profile image">
+                    @if(empty(auth()->user()->avatar))
+                    <img class="img-xs rounded-circle" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd5_kbfqZdTTsP506OSSvpu9A5nU6JgzV-qfrBq_N_513GdBrZ" alt="Profile image">
+                    @else
+                    <img class="img-xs rounded-circle" src="{{ Storage::url(auth()->user()->avatar) }}" alt="Profile image">
+                    @endif
                 </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
                     <a class="dropdown-item" href="{{ url('/admin/profile', [Auth::user()->id]) }}">

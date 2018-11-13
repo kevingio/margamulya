@@ -1,5 +1,4 @@
-<!-- Latest Posts -->
-
+@if(count($latest_articles) > 0)
 <div class="sidebar_section">
     <div class="sidebar_title_container">
         <div class="sidebar_title">Latest Articles</div>
@@ -58,3 +57,4 @@
         </div>
     </div>
 </div>
+@endif

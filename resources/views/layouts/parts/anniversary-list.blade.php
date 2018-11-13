@@ -34,11 +34,11 @@
                 <div class="side_post">
                     <div class="d-flex flex-row align-items-xl-center align-items-start justify-content-start">
                         <div class="event_date d-flex flex-column align-items-center justify-content-center">
-                            <div class="event_day">{{ date('d',strtotime($date->dob)) }}</div>
-                            <div class="event_month">{{ date('M',strtotime($date->dob)) }}</div>
+                            <div class="event_day">{{ date('d',strtotime($date->anniversary)) }}</div>
+                            <div class="event_month">{{ date('M',strtotime($date->anniversary)) }}</div>
                         </div>
                         <div class="side_post_content">
-                            <div class="side_post_title birthday-text mt-2">Selamat Ulang tahun Pernikahan ke-{{ 2018-date('Y', strtotime($date->dob)) }} {{ $date->name }}</div>
+                            <div class="side_post_title birthday-text mt-2">Selamat Ulang tahun Pernikahan ke-{{ 2018-date('Y', strtotime($date->anniversary)) }} {{ $date->name }}</div>
                         </div>
                     </div>
                 </div>

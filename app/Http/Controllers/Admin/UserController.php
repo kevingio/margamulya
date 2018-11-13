@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use App\Models\User;
 use Alert;
 
@@ -53,7 +54,10 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = $this->user->find($id);
+        $user = $this->user->findOrFail($id);
+        if(!empty($user->avatar)) {
+            $user->avatar = Storage::url($user->avatar);
+        }
         return view('web.admin.profile.index', compact('user'));
     }
 
@@ -77,7 +81,19 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        if($request->hasFile('photo')) {
+            $request->validate([
+                'photo' => 'required|file|mimes:jpeg,jpg,gif,png',
+            ]);
+
+            $file = $request->file('photo');
+            $data['avatar'] = $file->store('public/avatars');
+        }
+        alert()->success('Profile Changed!', 'Success')->autoclose(3000);
+        $this->user->find($id)->update($data);
+
+        return redirect()->back();
     }
 
     /**
