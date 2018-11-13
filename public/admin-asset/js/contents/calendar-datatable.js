@@ -32,7 +32,7 @@ $(document).ready(function () {
 					$('button.close').click();
 					swal({
 						title: "Success!",
-						text: "New event has been deleted!",
+						text: "New event has been added!",
 						icon: "success"
 					});
 					calendarPage.dtTable.ajax.reload(null, false);

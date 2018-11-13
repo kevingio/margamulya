@@ -119,7 +119,7 @@ $(document).ready(function () {
 						    success: function(response) {
 								swal({
 									title: "Success!",
-									text: "Poof! Your photo has been set as a thumbnail!",
+									text: "Poof! Your photo has been deleted!",
 									icon: "success"
 								});
 								photoPage.dtTable.ajax.reload(null, false);
@@ -146,7 +146,7 @@ $(document).ready(function () {
 						    success: function(response) {
 								swal({
 									title: "Success!",
-									text: "Poof! Your photo has been deleted!",
+									text: "Poof! Your photo has been set as a thumbnail!",
 									icon: "success"
 								});
 								photoPage.dtTable.ajax.reload(null, false);

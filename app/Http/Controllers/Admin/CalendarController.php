@@ -109,6 +109,13 @@ class CalendarController extends Controller
     public function destroy($id)
     {
         $event = $this->calendar->find(decrypt($id));
+        $files = $this->file->where('calendar_id', $event->id);
+        foreach ($files as $file) {
+            if(!empty($file->mime_type)) {
+                Storage::delete($file->filename);
+            }
+        }
+        $files->delete();
         $event->delete();
         return response()->json(['status' => true]);
     }

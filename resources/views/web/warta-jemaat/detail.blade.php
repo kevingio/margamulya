@@ -15,7 +15,7 @@
 <div class="page_content">
     <div class="container">
         <div class="row row-lg-eq-height">
-            <div class="col-lg-9">
+            <div class="col-lg-9 mb-5">
                 <div class="post_content">
                     <div class="post_panel post_panel_top d-flex flex-row align-items-center justify-content-start">
                         <div class="author_image"><div><img src="{{ asset('app-asset/img//author.jpg') }}" alt=""></div></div>

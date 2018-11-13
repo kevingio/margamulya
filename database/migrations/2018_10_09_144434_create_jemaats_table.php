@@ -17,7 +17,7 @@ class CreateJemaatsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->date('dob');
-            $table->enum('gender', ['L', 'P']);
+            $table->enum('gender', ['M', 'F']);
             $table->unsignedInteger('couple_id')->nullable();
             $table->date('anniversary')->nullable();
             $table->string('address')->nullable();

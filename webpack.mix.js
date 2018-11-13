@@ -10,7 +10,7 @@ const mix = require('laravel-mix');
  | file for the application as well as bundling up all the JS files.
  |
  */
-mix.combine([
+mix.scripts([
         'public/app-asset/js/jquery-3.2.1.min.js',
         'public/app-asset/css/bootstrap4/popper.js',
         'public/app-asset/css/bootstrap4/bootstrap.min.js',
@@ -35,7 +35,7 @@ mix.combine([
         'public/app-asset/css/responsive.css',
         'public/app-asset/css/custom.css'
     ], 'public/css/home.css')
-    .combine([
+    .scripts([
         'public/app-asset/js/jquery-3.2.1.min.js',
         'public/app-asset/css/bootstrap4/popper.js',
         'public/app-asset/css/bootstrap4/bootstrap.min.js',
@@ -61,7 +61,7 @@ mix.combine([
         'public/app-asset/css/category_responsive.css',
         'public/app-asset/css/custom.css'
     ], 'public/css/app.css')
-    .combine([
+    .scripts([
         'public/app-asset/js/jquery-3.2.1.min.js',
         'public/app-asset/css/bootstrap4/popper.js',
         'public/app-asset/css/bootstrap4/bootstrap.min.js',
@@ -99,7 +99,7 @@ mix.styles([
         'public/admin-asset/css/style.css',
         'public/admin-asset/css/custom.css'
     ], 'public/css/admin.css')
-    .combine([
+    .scripts([
         'public/admin-asset/vendors/js/vendor.bundle.base.js',
         'public/admin-asset/vendors/js/vendor.bundle.addons.js',
         'public/admin-asset/vendors/summernote/dist/summernote-bs4.js',
@@ -109,4 +109,4 @@ mix.styles([
         'public/admin-asset/js/contents/*.js'
     ], 'public/js/admin.js');
 
-mix.version();
+// mix.version();

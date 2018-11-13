@@ -122,9 +122,9 @@
                         <div class="section_content clearfix">
                             <div id="grid" data-columns>
                                 @foreach($latest_articles->take(6) as $article)
-                                @if(!$article->background_img)
+                                @if(!empty($article->background_img))
                                 <div class="card card_default card_small_with_image grid-item">
-                                    <img class="card-img-top" src="app-asset/img/post_10.jpg" alt="">
+                                    <img class="card-img-top" src="{{ $article->background_img }}" alt="">
                                     <div class="card-body">
                                         <div class="card-title card-title-small"><a href="{{ route('show-article', [$article->id]) }}">{{ $article->title }}</a></div>
                                         <small class="post_meta"><a href="#">{{ $article->user->name }}</a><span>{{ $article->created_at->diffForHumans() }}</span></small>

@@ -58,11 +58,14 @@ class JemaatController extends Controller
             }
             unset($data['marriage']);
             $new_data = $this->jemaat->create($data);
-            $jemaat = $this->jemaat->find($data['couple_id']);
-            $jemaat->update([
-                'couple_id' => $new_data->id
-            ]);
+            if(!empty($data['marriage'])) {
+                $jemaat = $this->jemaat->find($data['couple_id']);
+                $jemaat->update([
+                    'couple_id' => $new_data->id
+                ]);
+            }
         }
+        // return response()->json($data);
         return response()->json(['status', 200]);
     }
 

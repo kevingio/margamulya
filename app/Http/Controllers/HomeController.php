@@ -23,12 +23,7 @@ class HomeController extends Controller
     public function __construct(Article $article, Jemaat $jemaat, Calendar $calendar, Warta $warta, File $file, ArticleView $article_view, Agent $agent)
     {
         $articles = $article->with('user')->orderBy('created_at', 'desc')->take(15)->get();
-        foreach ($articles as $article) {
-            if(!empty($article->background_img)) {
-                $article->background_img = Storage::url($article->background_img);
-            }
-        }
-        $this->latest_articles = $articles;
+        $this->latest_articles = $this->latestArticles($articles);
         $this->calendars = $calendar->where('date', '>=', date('Y-m-d'))->take(15)->get();
         $this->article = $article;
         $this->warta = $warta;
@@ -37,6 +32,21 @@ class HomeController extends Controller
         $this->event = $calendar;
         $this->article_view = $article_view;
         $this->isMobile = $agent->isMobile();
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function latestArticles($articles)
+    {
+        foreach ($articles as $article) {
+            if(!empty($article->background_img)) {
+                $article->background_img = Storage::url($article->background_img);
+            }
+        }
+        return $articles;
     }
 
     /**
@@ -124,8 +134,8 @@ class HomeController extends Controller
         if(!empty($article->background_img)) {
             $article->background_img = Storage::url($article->background_img);
         }
-        $latest_articles = $this->article->with('user')->where('id', '!=', $id)->orderBy('created_at', 'desc')->take(15)->get();
-
+        $articles = $this->article->with('user')->where('id', '!=', $id)->orderBy('created_at', 'desc')->take(15)->get();
+        $latest_articles = $this->latestArticles($articles);
         return view('web.article.detail')
                 ->with('latest_articles', $latest_articles)
                 ->with('calendars', $this->calendars)
@@ -292,7 +302,7 @@ class HomeController extends Controller
     {
         $data = $request->all();
         $mail = Mail::send('emails.contact-form', $data, function($message) {
-            $message->to('admin@margamulya.or.id', 'GPIB Marga Mulya Admin')
+            $message->to('inforkom@gpibmargamulya.or.id', 'GPIB Marga Mulya Admin')
                     ->subject('Website Interaction')
                     ->from('no-reply@gpibmargamulya.or.id','GPIB Marga Mulya Web');
         });

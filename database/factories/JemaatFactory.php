@@ -7,6 +7,7 @@ $factory->define(App\Models\Jemaat::class, function (Faker $faker) {
         'name' => $faker->name,
         'dob' => $faker->dateTimeBetween('this week', '+6 days'),
         'anniversary' => $faker->dateTimeBetween('last week', '+6 days'),
+        'gender' => 'M',
         'address' => $faker->address
     ];
 });

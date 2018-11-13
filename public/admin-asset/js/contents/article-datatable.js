@@ -31,7 +31,7 @@ $(document).ready(function () {
 								articlePage.dtTable.ajax.reload(null, false);
 								swal({
 									title: "Success!",
-									text: "Poof! Your video has been deleted!",
+									text: "Poof! Your article has been deleted!",
 									icon: "success"
 								});
 						    }

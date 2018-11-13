@@ -41,7 +41,7 @@
                                         @if(empty($article->background_img))
                                         <img src="{{ asset('app-asset/img/top_1.jpg') }}" class="rounded" alt="">
                                         @else
-                                        <img src="{{ $article->background_img }}" class="rounded" alt="">
+                                        <img src="{{ asset($article->background_img) }}" class="rounded" alt="">
                                         @endif
                                     </div></div>
                                 <div class="side_post_content">
@@ -57,3 +57,4 @@
             </div>
         </div>
     </div>
+</div>
