@@ -147,22 +147,22 @@
                 <div class="wrapper">
                     <div class="d-flex justify-content-between">
                         <p class="mb-2">Photos ({{ $count['photo'] }})</p>
-                        <p class="mb-2 text-primary">{{ number_format($storage['photo'],1) }}%</p>
+                        <p class="mb-2 text-primary">{{ $storage['photo']*100 }}%</p>
                     </div>
                     <div class="progress">
                         <div class="progress-bar bg-primary progress-bar-striped progress-bar-animated"
-                             role="progressbar" style="width: {{ number_format($storage['photo'],1) }}%" aria-valuenow="{{ number_format($storage['photo'],1) }}"
+                             role="progressbar" style="width: {{ $storage['photo']*100 }}%" aria-valuenow="{{ $storage['photo']*100 }}"
                              aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                 </div>
                 <div class="wrapper mt-4">
                     <div class="d-flex justify-content-between">
                         <p class="mb-2">Warta ({{ $count['warta'] }})</p>
-                        <p class="mb-2 text-success">{{ number_format($storage['warta'],1) }}%</p>
+                        <p class="mb-2 text-success">{{ $storage['warta']*100 }}%</p>
                     </div>
                     <div class="progress">
                         <div class="progress-bar bg-success progress-bar-striped progress-bar-animated"
-                             role="progressbar" style="width: {{ number_format($storage['warta'],1) }}%" aria-valuenow="{{ number_format($storage['warta'],1) }}"
+                             role="progressbar" style="width: {{ $storage['warta']*100 }}%" aria-valuenow="{{ $storage['warta']*100 }}"
                              aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                 </div>

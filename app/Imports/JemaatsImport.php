@@ -16,7 +16,7 @@ class JemaatsImport implements ToCollection
     {
         foreach ($rows as $index => $row) {
             if($index > 0) {
-                Jemaat::create([
+                Jemaat::updateOrCreate([
                     'name' => $row[0],
                     'dob' => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row[1]),
                     'gender' => $row[2],

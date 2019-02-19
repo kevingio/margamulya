@@ -35,7 +35,7 @@ class HomeController extends Controller
         $anniversary = $this->jemaat->getAnniversary();
 
         $onlineUser = Active::guests()->count();
-        $totalVisit = DB::table('sessions')->selectRaw('count(*) as total')->groupBy('ip_address')->get();
+        $totalVisit = DB::table('sessions')->selectRaw('count(*) as total')->groupBy('payload')->get();
         $visitors = [
             'online' => $onlineUser,
             'total' => count($totalVisit)
@@ -47,7 +47,7 @@ class HomeController extends Controller
             'warta' =>$this->warta->getTotal()
         ];
         $storage = [
-            'photo' => number_format(($this->file->getSize('photo') + $this->article_image->getSize())/1000000000,3),
+            'photo' => number_format(($this->file->getSize('photo') + $this->article_image->getSize())/1000000000),
             'warta' => $this->warta->getSize(),
             'system' => 0.20
         ];

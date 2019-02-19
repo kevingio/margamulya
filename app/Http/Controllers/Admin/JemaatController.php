@@ -57,7 +57,7 @@ class JemaatController extends Controller
                 unset($data['anniversary']);
             }
             unset($data['marriage']);
-            $new_data = $this->jemaat->create($data);
+            $new_data = $this->jemaat->updateOrCreate($data);
             if(!empty($data['marriage'])) {
                 $jemaat = $this->jemaat->find($data['couple_id']);
                 $jemaat->update([

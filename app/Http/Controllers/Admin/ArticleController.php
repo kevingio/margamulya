@@ -178,8 +178,10 @@ class ArticleController extends Controller
         $article->update($data);
 
         $old_assets = $this->article_image->where('article_id', $id)->get();
-        foreach ($old_assets as $asset) {
-            Storage::delete($asset->filename);
+        if(!empty($article_assets)) {
+            foreach ($old_assets as $asset) {
+                Storage::delete($asset->filename);
+            }
         }
         $this->article_image->where('article_id', $id)->delete();
         foreach ($article_assets as $asset) {

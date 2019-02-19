@@ -16,9 +16,9 @@ $(document).ready(function () {
             $('#form-add-jemaat').on('submit', function (e) {
 				e.preventDefault();
 				var data = $(this).serializeArray();
+				$(this).find("input, textarea").val('');
 				$.post('/admin/jemaat', data)
 				.done(function (response) {
-					$(this).find("input, textarea").val('');
 					$('button.close').click();
 					jemaatPage.dtTable.ajax.reload(null, false);
 					swal({

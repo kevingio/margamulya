@@ -59,7 +59,7 @@ class HomeController extends Controller
         $birthday = $this->jemaat->getBirthday();
         $anniversary = $this->jemaat->getAnniversary();
 
-        $events = $this->event->where('date', '<=', date('Y-m-d'))->take(4)->get();
+        $events = $this->event->where('date', '<=', date('Y-m-d'))->orderBy('date', 'desc')->take(4)->get();
         foreach ($events as $event) {
             if(!empty($event->thumbnail)) {
                 $event->thumbnail = Storage::url($event->thumbnail);

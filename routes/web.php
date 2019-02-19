@@ -13,7 +13,6 @@
 
 date_default_timezone_set('Asia/Bangkok');
 
-// Auth::routes();
 Route::post('login', 'Auth\LoginController@login')->name('login');
 Route::get('login',  'Auth\LoginController@showLoginForm');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
@@ -32,7 +31,7 @@ Route::get('/about/{page}', 'HomeController@showMenuAbout')->name('about');
 Route::post('/contact-form/send', 'HomeController@sendMailContact')->name('send-contact-form');
 Route::post('/search/autocomplete', 'HomeController@searchSuggestions')->name('search-autocomplete');
 
-Route::prefix('admin')->middleware('auth')->group(function () {
+Route::prefix('admin')->middleware(['auth', 'web'])->group(function () {
     Route::resource('/', 'Admin\HomeController');
     Route::resource('/jemaat', 'Admin\JemaatController');
     Route::resource('/article', 'Admin\ArticleController');

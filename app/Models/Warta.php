@@ -40,7 +40,7 @@ class Warta extends Model
      */
     public function getSize()
     {
-        return number_format(Self::sum('size')/1000000000, 3);
+        return number_format(Self::sum('size')/1000000000);
     }
 
     /**

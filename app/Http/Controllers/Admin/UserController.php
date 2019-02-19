@@ -82,6 +82,7 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->all();
+
         if($request->hasFile('photo')) {
             $request->validate([
                 'photo' => 'required|file|mimes:jpeg,jpg,gif,png',
