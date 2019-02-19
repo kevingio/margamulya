@@ -2,8 +2,8 @@
 <html lang="en">
     <head>
         <title>@yield('page-title')</title>
-        <link rel="icon" href="{{ asset('favicon.png') }}" type="image/gif" sizes="64x64">
-        <link rel="mask-icon" href="{{ asset('favicon.png') }}" color="#FFFFFF">
+        <link rel="icon" href="{{ asset('favicon.png', true) }}" type="image/gif" sizes="64x64">
+        <link rel="mask-icon" href="{{ asset('favicon.png', true) }}" color="#FFFFFF">
         <meta name="theme-color" content="rgba(0,0,0,0.5)">
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,9 +12,9 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         @if(Request::is('article/*') || Request::is('event/*') || Request::is('warta-umum/*') || Request::is('warta-jemaat/*') || Request::is('search/*'))
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/article.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/article.css', true) }}">
         @else
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css', true) }}">
         @endif
     </head>
     <body>
@@ -26,9 +26,9 @@
     </div>
 
     @if(Request::is('article/*') || Request::is('event/*') || Request::is('warta-umum/*') || Request::is('warta-jemaat/*') || Request::is('search/*'))
-    <script src="{{ asset('js/article.js') }}"></script>
+    <script src="{{ asset('js/article.js', true) }}"></script>
     @else
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/app.js', true) }}"></script>
     @endif
     </body>
 </html>

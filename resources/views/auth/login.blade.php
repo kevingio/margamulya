@@ -7,8 +7,8 @@
         <meta name="description" content="GPIB Margamulya">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}">
-        <link rel="icon" href="{{ asset('favicon.png') }}" type="image/gif" sizes="64x64">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css', true) }}">
+        <link rel="icon" href="{{ asset('favicon.png', true) }}" type="image/gif" sizes="64x64">
         <meta name="theme-color" content="rgba(0,0,0,0.5)">
     </head>
     <body>
@@ -47,6 +47,6 @@
 
         </div>
 
-        <script src="{{ asset('js/home.js') }}"></script>
+        <script src="{{ asset('js/home.js', true) }}"></script>
     </body>
 </html>
