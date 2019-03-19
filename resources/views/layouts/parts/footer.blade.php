@@ -52,7 +52,7 @@
                     <div class="copyright text-light">
                         2018 GPIB Margamulya | Hand-crafted with
                         <i class="fa fa-heart text-danger" aria-hidden="true"></i> by
-                        <a href="https://www.kevingiovanni.com">Kevin Giovanni</a>
+                        <a href="https://www.instagram.com/kevinevraldo">Kevin Giovanni</a>
                     </div>
                 </div>
             </div>
