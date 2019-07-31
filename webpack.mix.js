@@ -110,3 +110,7 @@ mix.styles([
     ], 'public/js/admin.js');
 
 // mix.version();
+
+mix.webpackConfig({
+    mode: 'development'
+});

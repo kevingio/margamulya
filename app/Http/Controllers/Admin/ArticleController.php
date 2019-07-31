@@ -140,7 +140,10 @@ class ArticleController extends Controller
             ]);
 
             if(!empty($article->background_img)) {
-                Storage::delete($article->background_img);
+                $path = storage_path() . '/app/' . $article->background_img;
+                if(file_exists($path)) {
+                    unlink($path);
+                }
             }
             $file = $request->file('photo');
             $data['background_img'] = $file->store('public/articles');
@@ -180,7 +183,10 @@ class ArticleController extends Controller
         $old_assets = $this->article_image->where('article_id', $id)->get();
         if(!empty($article_assets)) {
             foreach ($old_assets as $asset) {
-                Storage::delete($asset->filename);
+                $path = storage_path() . '/app/' . $asset->filename;
+                if(file_exists($path)) {
+                    unlink($path);
+                }
             }
         }
         $this->article_image->where('article_id', $id)->delete();
@@ -202,7 +208,10 @@ class ArticleController extends Controller
     {
         $article = $this->article->find(decrypt($id));
         if(!empty($article->background_img)) {
-            Storage::delete($article->background_img);
+            $path = storage_path() . '/app/' . $article->background_img;
+            if(file_exists($path)) {
+                unlink($path);
+            }
         }
         $article->delete();
         return response()->json(['status' => 200]);

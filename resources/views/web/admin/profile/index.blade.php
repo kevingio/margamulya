@@ -32,7 +32,7 @@
                                 </div>
                                 <div class="p-image">
                                     <i class="fa fa-camera upload-button"></i>
-                                    <input class="file-upload" type="file" name="photo" accept="image/*"/>
+                                    <input class="file-upload" type="file" name="photo" accept="image/x-png,image/gif,image/jpeg"/>
                                 </div>
                                 <!-- <img src="{{ asset('admin-asset/img/faces/face1.jpg') }}" style="width: 100%;" alt="profile"> -->
                             </div>

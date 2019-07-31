@@ -102,7 +102,10 @@ class WartaController extends Controller
         $data = $request->all();
         if($request->hasFile('file')) {
             $oldFile = $this->warta->find(decrypt($id));
-            Storage::delete($oldFile->path);
+            $path = storage_path() . '/app/' . $oldFile->path;
+            if(file_exists($path)) {
+                unlink($path);
+            }
             $file = $request->file('file');
             $data['path'] = $file->store('public/wartas');
             $data['size'] = $file->getSize();
@@ -121,7 +124,10 @@ class WartaController extends Controller
     public function destroy($id)
     {
         $warta = $this->warta->find(decrypt($id));
-        Storage::delete($warta->path);
+        $path = storage_path() . '/app/' . $warta->path;
+        if(file_exists($path)) {
+            unlink($path);
+        }
         $warta->delete();
         return response()->json(['status' => true]);
     }

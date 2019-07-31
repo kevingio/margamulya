@@ -118,7 +118,10 @@ class FileController extends Controller
 
             $newFile = $request->file('photo');
             $data['filename'] = $newFile->store('public/events');
-            Storage::delete($file->filename);
+            $path = storage_path() . '/app/' . $file->filename;
+            if(file_exists($path)) {
+                unlink($path);
+            }
             $data['mime_type'] = $newFile->getClientMimeType();
             $data['size'] = $newFile->getSize();
         }
@@ -137,7 +140,10 @@ class FileController extends Controller
         $file = $this->file->find(decrypt($id));
         if(!empty($file->mime_type)) {
             $this->event->where('thumbnail', $file->filename)->update(['thumbnail' => NULL]);
-            Storage::delete($file->filename);
+            $path = storage_path() . '/app/' . $file->filename;
+            if(file_exists($path)) {
+                unlink($path);
+            }
         }
         $file->delete();
         return response()->json(['status' => true]);

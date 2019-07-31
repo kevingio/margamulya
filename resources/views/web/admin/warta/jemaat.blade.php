@@ -34,7 +34,7 @@
                                 <span class="btn btn-warning btn-file">
                                     <i class="mdi mdi-file-document"></i>
                                     Browse
-                                    <input type="file" name="file">
+                                    <input type="file" name="file" accept="application/pdf,application/vnd.ms-excel">
                                 </span>
                                 <small class="text-danger" class="error" style="display: none;">*required</small>
                             </div>
@@ -85,7 +85,7 @@
                                 <span class="btn btn-warning btn-file">
                                     <i class="mdi mdi-file-document"></i>
                                     Browse
-                                    <input type="file" name="file">
+                                    <input type="file" name="file" accept="application/pdf,application/vnd.ms-excel">
                                 </span>
                                 <small class="text-danger" class="error" style="display: none;">*required</small>
                             </div>

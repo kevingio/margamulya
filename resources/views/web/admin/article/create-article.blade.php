@@ -27,7 +27,7 @@
                                     <div class="mt-3">
                                         <span class="btn btn-warning btn-file">
                                             <i class="mdi mdi-file-document"></i>
-                                            Browse <input type="file" name="photo" required>
+                                            Browse <input type="file" name="photo" accept="image/x-png,image/gif,image/jpeg" required>
                                         </span>
                                         <br>
                                         <small class="text-danger d-none">Image must be gif, jpg, jpeg or png!</small>

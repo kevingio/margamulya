@@ -48,7 +48,11 @@ class JemaatController extends Controller
             $file = $request->file('file');
             $path = $file->store('public');
             Excel::import(new JemaatsImport, $path);
-            Storage::delete($path);
+
+            $path = storage_path() . '/app/' . $path;
+            if(file_exists($path)) {
+                unlink($path);
+            }
 
             return redirect('/admin/jemaat');
         } else {

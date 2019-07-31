@@ -112,7 +112,10 @@ class CalendarController extends Controller
         $files = $this->file->where('calendar_id', $event->id);
         foreach ($files as $file) {
             if(!empty($file->mime_type)) {
-                Storage::delete($file->filename);
+                $path = storage_path() . '/app/' . $file->filename;
+                if(file_exists($path)) {
+                    unlink($path);
+                }
             }
         }
         $files->delete();
