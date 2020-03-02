@@ -5,6 +5,7 @@
         <link rel="icon" href="{{ asset('favicon.png') }}" type="image/gif" sizes="64x64">
         <meta name="theme-color" content="rgba(0,0,0,0.5)">
         <meta charset="utf-8">
+        <meta name="description" content="Website resmi Gereja Protestan di Indonesia bagian Barat (GPIB) Margamulya">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
