@@ -109,8 +109,4 @@ mix.styles([
         'public/admin-asset/js/contents/*.js'
     ], 'public/js/admin.js');
 
-// mix.version();
-
-mix.webpackConfig({
-    mode: 'development'
-});
+mix.version();

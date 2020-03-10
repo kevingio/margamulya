@@ -1,10 +1,10 @@
 {
-    "/js/home.js": "/js/home.js",
-    "/css/home.css": "/css/home.css",
-    "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css",
-    "/js/article.js": "/js/article.js",
-    "/css/article.css": "/css/article.css",
-    "/css/admin.css": "/css/admin.css",
-    "/js/admin.js": "/js/admin.js"
+    "/js/home.js": "/js/home.js?id=20e0fbae95d37c5b169e",
+    "/css/home.css": "/css/home.css?id=24cb8a605cb1ab17c9d1",
+    "/js/app.js": "/js/app.js?id=6b007f6b28ce7c6fb8da",
+    "/css/app.css": "/css/app.css?id=161f6ea34e40b931aa82",
+    "/js/article.js": "/js/article.js?id=f18b98710015913df69d",
+    "/css/article.css": "/css/article.css?id=c3c2b0d2834514d9a94a",
+    "/css/admin.css": "/css/admin.css?id=63815e267e846acbbc05",
+    "/js/admin.js": "/js/admin.js?id=3ad76ba702441d0c3829"
 }

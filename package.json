@@ -3,45 +3,19 @@
   "scripts": {
     "dev": "npm run development",
     "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "npm run development -- --watch",
     "watch-poll": "npm run watch -- --watch-poll",
     "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
     "prod": "npm run production",
     "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
   "devDependencies": {
-    "axios": "^0.18",
-    "bootstrap": "^4.0.0-beta.2",
-    "cross-env": "^5.1",
-    "jquery": "^3.2",
-    "laravel-mix": "^2.1.14",
-    "lodash": "^4.17.5",
-    "popper.js": "^1.14.4",
-    "vue": "^2.5.7"
+    "babel-eslint": "^10.1.0",
+    "cross-env": "^7.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-vue": "^6.2.2"
   },
   "dependencies": {
-    "datatables.net-bs4": "^1.10.19",
-    "datatables.net-responsive-bs4": "^2.2.3",
-    "webpack": "^4.25.1",
-    "webpack-cli": "^3.1.2",
-    "laravel-mix": "^2.1.14"
-  },
-  "name": "margamulya",
-  "description": "<p align=\"center\"><img src=\"https://laravel.com/assets/img/components/logo-laravel.svg\"></p>",
-  "version": "1.0.0",
-  "main": "webpack.mix.js",
-  "directories": {
-    "test": "tests"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kevingio/margamulya.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/kevingio/margamulya/issues"
-  },
-  "homepage": "https://github.com/kevingio/margamulya#readme"
+    "laravel-mix": "^5.0.1"
+  }
 }
