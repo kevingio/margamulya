@@ -21,7 +21,8 @@
                         <div class="author_image">
                             <div>
                                 @if(empty($article->user->avatar))
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd5_kbfqZdTTsP506OSSvpu9A5nU6JgzV-qfrBq_N_513GdBrZ" alt="">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd5_kbfqZdTTsP506OSSvpu9A5nU6JgzV-qfrBq_N_513GdBrZ"
+                                    alt="">
                                 @else
                                 <img src="{{ Storage::url($article->user->avatar) }}" alt="">
                                 @endif
@@ -63,7 +64,7 @@
                             @foreach($wartas as $warta)
                             <div class="card card_default card_small_no_image grid-item">
                                 <div class="card-body">
-                                    <div class="card-title card-title-small"><a href="{{ route('show-warta-jemaat', [$warta->id]) }}">{{ $warta->title }}</a></div>
+                                    <div class="card-title card-title-small"><a href="{{ route('show-warta', [$warta->id]) }}">{{ $warta->title }}</a></div>
                                     <small class="post_meta"><a href="#">{{ $warta->user->name }}</a><span>{{ $warta->created_at->diffForHumans() }}</span></small>
                                 </div>
                             </div>

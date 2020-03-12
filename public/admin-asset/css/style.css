@@ -13720,8 +13720,6 @@ input:focus {
         -o-transition-timing-function: ease-in;
         transition-timing-function: ease-in; }
         .sidebar .nav .nav-item .nav-link i.menu-arrow:before {
-          content: "\F142";
-          font-family: "Material Design Icons";
           font-size: 18px;
           line-height: 1;
           font-style: normal;
@@ -15818,8 +15816,6 @@ ul {
   .nav .nav-item.dropdown .dropdown-toggle:after,
   .navbar-nav .nav-item.dropdown .dropdown-toggle:after {
     border: none;
-    content: "\F140";
-    font: normal normal normal 28px/1 "Material Design Icons";
     font-size: inherit;
     text-rendering: auto;
     line-height: inherit;

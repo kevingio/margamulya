@@ -8,12 +8,25 @@ $(document).ready(function() {
 				self.readURL(this);
 			});
 
-            $('.summernote').summernote({
-                height: 500,
-                codemirror: {
-                    theme: 'lumen'
-                }
-            });
+			$(".summernote").summernote({
+				height: 500,
+				codemirror: {
+					theme: "lumen"
+				},
+				toolbar: [
+					[
+						"font",
+						[
+							"bold",
+							"italic",
+							"underline",
+						]
+					],
+					['color', ['color']],
+					["para", ["ol", "ul", "paragraph"]],
+					["insert", ["link", "picture"]]
+				]
+			});
         },
 		readURL: function (input) {
 			if (input.files && input.files[0]) {

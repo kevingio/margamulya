@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'username', 'password', 'avatar'
+        'name', 'username', 'password', 'avatar', 'role', 'contributor_type_id'
     ];
 
     /**
@@ -30,12 +30,12 @@ class User extends Authenticatable
     ];
 
     /**
-     * Relation to Role
+     * Relation to Contributor
      *
      */
-    public function role()
+    public function contributorType()
     {
-        return $this->belongsTo('App\Models\Role');
+        return $this->belongsTo(ContributorType::class);
     }
 
     /**
@@ -45,21 +45,10 @@ class User extends Authenticatable
     public function datatable()
     {
 
-        $datas = Self::orderBy('created_at', 'desc')->get();
+        $datas = Self::where('role', 'user')->orderBy('created_at', 'desc')->get();
         return Datatables::of($datas)
-            ->editColumn('avatar', function ($data) {
-                $html = '
-                <div>
-                    <img src="/admin-asset/img/faces-clipart/pic-1.png" style="width: 100px; height: auto;" alt="image"/>
-                </div>';
-                return $html;
-            })
-            ->editColumn('username', function ($data) {
-                $html = '<a href="'.url('/admin/profile', [$data->id]).'">'.$data->username.'</a>';
-                return $html;
-            })
-            ->editColumn('created', function ($data) {
-                return date('d F Y H:i', strtotime($data->created_at));
+            ->editColumn('contributor_type', function ($data) {
+                return $data->contributorType->name;
             })
             ->editColumn('action', function ($data) {
                 $html = '
@@ -68,14 +57,12 @@ class User extends Authenticatable
                         <i class="mdi mdi-dots-horizontal m-0"></i>
                     </button>
                     <div class="dropdown-menu datatable-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="'.url('/admin/profile', [$data->id]).'">View</a>
-                        <a class="dropdown-item" href="'.url('/admin/post', [$data->id]).'">Edit</a>
-                        <a class="dropdown-item text-danger delete" href="javascript: void(0)">Move to trash</a>
+                        <a class="dropdown-item edit" href="javascript:void(0)">Edit</a>
                     </div>
                 </div>';
                 return $html;
             })
-            ->rawColumns(['username','avatar','action'])
+            ->rawColumns(['action'])
             ->make(true);
     }
 }

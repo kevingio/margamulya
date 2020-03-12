@@ -21,6 +21,6 @@ class ArticleImage extends Model
      */
     public function getSize()
     {
-        return Self::sum('size')/1000000;
+        return Self::sum('size');
     }
 }

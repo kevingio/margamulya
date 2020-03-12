@@ -41,23 +41,6 @@ class Jemaat extends Model
      */
     public function getBirthday($take=0)
     {
-        // $from_month = date('m');
-        // $to_month = date('m', strtotime('+1 week'));
-        //
-        // $from_day = date('d');
-        // $to_day = date('d', strtotime('+1 week'));
-        //
-        // if($to_day > 6) {
-        //     $birthday = Self::whereMonth('dob', '>=', $from_month)
-        //                     ->whereMonth('dob', '<=', $to_month)
-        //                     ->whereDay('dob', '>=', $from_day)
-        //                     ->whereDay('dob', '<=', $to_day);
-        // } else {
-        //     $birthday = Self::whereMonth('dob', '>=', $from_month)
-        //                     ->orWhereMonth('dob', '<=', $to_month)
-        //                     ->whereDay('dob', '>=', $from_day)
-        //                     ->orWhereDay('dob', '<=', $to_day);
-        // }
         $birthday = Self::whereMonth('dob', date('m'))
                         ->whereDay('dob', date('d'));
         // dd($birthday->toSql());
@@ -74,17 +57,6 @@ class Jemaat extends Model
      */
     public function getAnniversary($take=0)
     {
-        // $from_month = date('m');
-        // $to_month = date('m', strtotime('+1 week'));
-        //
-        // $from_day = date('d');
-        // $to_day = date('d', strtotime('+1 week'));
-        // $anniversary = Self::whereNotNull('anniversary')
-        //                     ->whereMonth('anniversary', '>=', $from_month)
-        //                     ->whereMonth('anniversary', '<=', $to_month)
-        //                     ->whereDay('anniversary', '>=', $from_day)
-        //                     ->whereDay('anniversary', '<=', $to_day)
-        //                     ->orderBy('anniversary');
         $anniversary = Self::whereNotNull('anniversary')
                             ->whereMonth('anniversary', date('m'))
                             ->whereDay('anniversary', date('d'))

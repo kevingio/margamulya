@@ -5,9 +5,9 @@
 @endsection
 
 @section('sweet-alert')
-    @if (Session::has('sweet_alert.alert'))
+    @if (session()->has('sweet_alert.alert'))
     <script>
-        swal({!! Session::get('sweet_alert.alert') !!});
+        swal({!! session()->get('sweet_alert.alert') !!});
     </script>
     @endif
 @endsection

@@ -7,7 +7,7 @@
         <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">
             Hand-crafted & made with
             <i class="mdi mdi-heart text-danger"></i> by
-            <a href="http://www.instagram.com/kevinevraldo">Kevin Giovanni</a>
+            <a href="https://www.semicolon.id" target="_blank">Semicolon</a>
         </span>
     </div>
 </footer>

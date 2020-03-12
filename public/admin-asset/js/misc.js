@@ -1,6 +1,6 @@
 $(document).ready(function () {
     var sidebar = $('.sidebar');
-
+    $('.select2').select2();
     $('#post-datatable_wrapper').removeClass('container-fluid');
 
     //Close other submenu in sidebar on opening any

@@ -8,7 +8,7 @@
 
 <!-- Modal Add Photo -->
 <div class="modal fade" id="add-photo-modal" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <form id="form-add-photo" enctype="multipart/form-data">
                 <div class="modal-header">
@@ -58,7 +58,7 @@
 
 <!-- Modal Edit Photo -->
 <div class="modal fade" id="edit-photo-modal" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialo modal-dialog-centeredg" role="document">
         <div class="modal-content">
             <form id="form-edit-photo" enctype="multipart/form-data">
                 <div class="modal-header">
@@ -108,7 +108,7 @@
 
 <!-- Modal Preview Photo -->
 <div class="modal fade" id="img-preview-modal" role="dialog" aria-hidden="true">
-    <div class="modal-dialog h-100 d-flex flex-column justify-content-center my-0" role="document">
+    <div class="modal-dialog modal-dialog-centered h-100 d-flex flex-column justify-content-center my-0" role="document">
         <div class="modal-content">
             <img src="" class="img-preview" alt="preview" />
         </div>

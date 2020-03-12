@@ -9,9 +9,14 @@ $(document).ready(function () {
 	var articlePage = {
 		dtTable: {},
 		init: function () {
+			$('select').select2({ width: '180px' });
 			this.initDatatable();
             $('#article-datatable_wrapper').removeClass('container-fluid');
-            $('table.table').css('width', '100%');
+			$('table.table').css('width', '100%');
+
+			$('select#select-type').on('change', function () {
+				articlePage.dtTable.ajax.reload(null, false);
+			});
 
 			$(document).on('click', '.text-danger.delete', function () {
 				var data_id = $(this).parent().parent().find('.datatable-action').attr('data');
@@ -51,7 +56,10 @@ $(document).ready(function () {
 	            "ajax": {
 	                url: "/admin/ajax/article",
 	                type: "POST",
-	                data: function (d) { d.mode = 'datatable'; }
+	                data: function (d) {
+						d.mode = 'datatable';
+						d.type = $('#select-type').length > 0 ? $('#select-type').val() : 'all';
+					}
 	            },
 		        "columns": [
 		            { data: 'title', name: 'title' },
@@ -66,7 +74,7 @@ $(document).ready(function () {
                     { targets: 'wrap-text', render: function (data,type,row) { return data.length > 70 ? data.substr( 0, 70 ) + '…' :data; } },
 					{ targets: 'text-center', className: 'text-center' },
 	            ],
-		    });
+			});
 		}
 	};
 

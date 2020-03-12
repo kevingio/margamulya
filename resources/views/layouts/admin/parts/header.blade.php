@@ -8,7 +8,7 @@
         </a>
     </div>
     <div class="navbar-menu-wrapper d-flex align-items-center">
-        @if(Request::is('admin/gallery/*/*') || Request::is('admin/article/*'))
+        @if(request()->is('admin/gallery/*/*') || request()->is('admin/article/*'))
         <ul class="navbar-nav navbar-nav-left header-links d-none d-md-flex">
             <li class="nav-item">
                 <a href="javascript: history.back()" class="nav-link">
@@ -28,6 +28,7 @@
                     @else
                     <img class="img-xs rounded-circle" src="{{ Storage::url(auth()->user()->avatar) }}" alt="Profile image">
                     @endif
+                    <i class="mdi mdi-chevron-down mr-0"></i>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
                     <a class="dropdown-item" href="{{ url('/admin/profile', [Auth::user()->id]) }}">

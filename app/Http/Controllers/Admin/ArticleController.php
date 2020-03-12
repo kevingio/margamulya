@@ -7,14 +7,16 @@ use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Models\ArticleImage;
+use App\Models\ContributorType;
 use Image;
 
 class ArticleController extends Controller
 {
-    function __construct(Article $article, ArticleImage $article_image)
+    function __construct(Article $article, ArticleImage $article_image, ContributorType $contributorType)
     {
         $this->article = $article;
         $this->article_image = $article_image;
+        $this->contributorType = $contributorType;
     }
 
     /**
@@ -24,7 +26,8 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        return view('web.admin.article.index');
+        $articleTypes = $this->contributorType->get();
+        return view('web.admin.article.index', compact('articleTypes'));
     }
 
     /**
@@ -34,7 +37,8 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        $articleTypes = $this->contributorType->get();
+        return view('web.admin.article.create-article', compact('articleTypes'));
     }
 
     /**
@@ -46,7 +50,7 @@ class ArticleController extends Controller
     public function store(Request $request)
     {
         $data = $request->except('content');
-		$content = $request->content;
+        $content = $request->content;
         if($request->hasFile('photo')) {
             $request->validate([
                 'photo' => 'required|file|mimes:jpeg,jpg,gif,png',
@@ -72,13 +76,14 @@ class ArticleController extends Controller
 				$filepath = "/public/articles/$slug_title-$filename.$mimetype";
                 $image = Image::make($src);
                 Storage::put($filepath, (string) $image->encode());
+                $fileSize = filesize(storage_path('app' . $filepath));
 
 				$img->removeAttribute('src');
-				$img->setAttribute('src', str_replace('public','storage',$filepath));
+                $img->setAttribute('src', str_replace('public','storage',$filepath));
                 $article_assets[] = [
                     'filename' => $filepath,
                     'mime_type' => $mimetype,
-                    'size' => $image->filesize()
+                    'size' => $fileSize
                 ];
 			}
 		}
@@ -103,7 +108,12 @@ class ArticleController extends Controller
      */
     public function show($id)
     {
-        $article = $this->article->find($id);
+        $article = $this->article->where(function ($query) {
+                                    if (auth()->user()->role !== 'admin') {
+                                        $query->where('user_id', auth()->id());
+                                    }
+                                })
+                                ->findOrFail($id);
         if(!empty($article->background_img)) {
             $article->background_img = Storage::url($article->background_img);
         }
@@ -118,7 +128,7 @@ class ArticleController extends Controller
      */
     public function edit($id)
     {
-        //
+        abort(404);
     }
 
     /**
@@ -130,7 +140,11 @@ class ArticleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $article = $this->article->find($id);
+        $article = $this->article->where(function ($query) {
+                                    if (auth()->user()->role !== 'admin') {
+                                        $query->where('user_id', auth()->id());
+                                    }
+                                })->findOrFail($id);
         $data = $request->except('content');
 		$content = $request->content;
 
@@ -165,13 +179,14 @@ class ArticleController extends Controller
 				$filepath = "/public/articles/$slug_title-$filename.$mimetype";
                 $image = Image::make($src);
                 Storage::put($filepath, (string) $image->encode());
+                $fileSize = filesize(storage_path('app' . $filepath));
 
 				$img->removeAttribute('src');
 				$img->setAttribute('src', str_replace('public','storage',$filepath));
                 $article_assets[] = [
                     'filename' => $filepath,
                     'mime_type' => $mimetype,
-                    'size' => $image->filesize()
+                    'size' => $fileSize
                 ];
 			}
 		}
@@ -218,16 +233,6 @@ class ArticleController extends Controller
     }
 
     /**
-     * Display create article view
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function newArticle()
-    {
-        return view('web.admin.article.create-article');
-    }
-
-    /**
      * Handle all AJAX request
      * @param  Request $request
      * @return \Illuminate\Http\Response
@@ -236,7 +241,7 @@ class ArticleController extends Controller
     {
         switch ($request->mode) {
             case 'datatable':
-                return $this->article->datatable();
+                return $this->article->datatable($request->type);
                 break;
         }
     }

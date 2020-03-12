@@ -10,22 +10,16 @@
                     </div>
                     <nav class="main_nav">
                         <ul>
-                            <li class="nav_item{{ Request::is('/') ? ' active' : '' }}"><a href="/">Home</a></li>
-                            <li class="nav_item dropdown {{ Request::is('warta-*') || Request::is('warta-*/*') ? ' active' : '' }}">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Warta</a>
-                                <div class="dropdown-menu navbar-dropdown" aria-labelledby="dropdownMenu2">
-                                    <button class="dropdown-item {{ Request::is('warta-jemaat') || Request::is('warta-jemaat/*') ? ' active' : '' }}" type="button" onclick="window.location.href = '{{ route('warta-jemaat') }}'">Jemaat</button>
-                                    <button class="dropdown-item {{ Request::is('warta-umum') || Request::is('warta-umum/*') ? ' active' : '' }}" type="button" onclick="window.location.href = '{{ route('warta-umum') }}'">Umum</button>
-                                </div>
-                            </li>
-                            <li class="nav_item{{ Request::is('article') || Request::is('article/*') ? ' active' : '' }}"><a href="{{ url('article') }}">Articles</a></li>
-                            <li class="nav_item{{ Request::is('event') || Request::is('event/*') ? ' active' : '' }}"><a href="{{ url('event') }}">Events</a></li>
-                            <li class="nav_item{{ Request::is('directory') || Request::is('directory/*') ? ' active' : '' }}"><a href="{{ route('directory') }}">Directory</a></li>
-                            <li class="nav_item dropdown {{ Request::is('about/*') ? ' active' : '' }}">
+                            <li class="nav_item{{ request()->is('/') ? ' active' : '' }}"><a href="/">Home</a></li>
+                            <li class="nav_item{{ request()->is('warta') || request()->is('warta/*') ? ' active' : '' }}"><a href="{{ url('warta') }}">Warta</a></li>
+                            <li class="nav_item{{ request()->is('article') || request()->is('article/*') ? ' active' : '' }}"><a href="{{ url('article') }}">Articles</a></li>
+                            <li class="nav_item{{ request()->is('event') || request()->is('event/*') ? ' active' : '' }}"><a href="{{ url('event') }}">Events</a></li>
+                            <li class="nav_item{{ request()->is('directory') || request()->is('directory/*') ? ' active' : '' }}"><a href="{{ route('directory') }}">Directory</a></li>
+                            <li class="nav_item dropdown {{ request()->is('about/*') ? ' active' : '' }}">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About</a>
                                 <div class="dropdown-menu navbar-dropdown" aria-labelledby="dropdownMenu2">
-                                    <button class="dropdown-item {{ Request::is('about/gpib') ? ' active' : '' }}" type="button" onclick="window.location.href = '{{ url('about/gpib') }}'">GPIB</button>
-                                    <button class="dropdown-item {{ Request::is('about/gpib-margamulya') ? ' active' : '' }}" type="button" onclick="window.location.href = '{{ url('about/gpib-margamulya') }}'">GPIB Marga Mulya</button>
+                                    <button class="dropdown-item {{ request()->is('about/gpib') ? ' active' : '' }}" type="button" onclick="window.location.href = '{{ url('about/gpib') }}'">GPIB</button>
+                                    <button class="dropdown-item {{ request()->is('about/gpib-margamulya') ? ' active' : '' }}" type="button" onclick="window.location.href = '{{ url('about/gpib-margamulya') }}'">GPIB Marga Mulya</button>
                                 </div>
                             </li>
                         </ul>

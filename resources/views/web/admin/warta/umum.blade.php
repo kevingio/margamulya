@@ -8,7 +8,7 @@
 
 <!-- Modal Add Warta Umum -->
 <div class="modal fade" id="add-warta-modal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <form id="form-add-warta" method="post" enctype="multipart/form-data">
                 @csrf
@@ -59,7 +59,7 @@
 
 <!-- Modal Edit Warta Umum -->
 <div class="modal fade" id="edit-warta-modal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <form id="form-edit-warta" method="post" enctype="multipart/form-data">
                 @csrf
@@ -110,7 +110,7 @@
 
 <!-- Modal Preview Warta Umum -->
 <div class="modal fade" id="preview-warta-modal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-lg h-100 d-flex flex-column justify-content-center my-0" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-lg h-100 d-flex flex-column justify-content-center my-0" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="warta-text-modal"></h4>

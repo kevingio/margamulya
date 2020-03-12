@@ -47,10 +47,19 @@ class Article extends Model
      * Get Datatable Data
      * @return array
      */
-    public function datatable()
+    public function datatable($type)
     {
-
-        $datas = Self::with(['user', 'article_view'])->orderBy('created_at', 'desc')->get();
+        $datas = Self::whereHas('user', function ($query) use ($type) {
+                        if ($type != 'all') {
+                            $query->where('contributor_type_id', $type);
+                        }
+                        if (auth()->user()->role == 'user') {
+                            $query->where('user_id', auth()->id());
+                        }
+                    })
+                    ->with(['user', 'article_view'])
+                    ->latest()
+                    ->get();
         return Datatables::of($datas)
             ->editColumn('title', function ($data) {
                 return $data->title;

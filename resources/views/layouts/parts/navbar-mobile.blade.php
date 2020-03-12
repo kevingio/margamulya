@@ -12,8 +12,7 @@
     <nav class="menu_nav">
         <ul class="menu_mm">
             <li class="menu_mm"><a href="{{ route('home') }}">Home</a></li>
-            <li class="menu_mm"><a href="{{ route('warta-jemaat') }}">Warta Jemaat</a></li>
-            <li class="menu_mm"><a href="{{ route('warta-umum') }}">Warta Umum</a></li>
+            <li class="menu_mm"><a href="{{ route('warta') }}">Warta</a></li>
             <li class="menu_mm"><a href="{{ route('article') }}">Articles</a></li>
             <li class="menu_mm"><a href="{{ route('event') }}">Events</a></li>
             <li class="menu_mm"><a href="{{ route('directory') }}">Directory</a></li>

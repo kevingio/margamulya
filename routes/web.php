@@ -23,27 +23,27 @@ Route::get('/article', 'HomeController@article')->name('article');
 Route::get('/article/{id}', 'HomeController@showArticle')->name('show-article');
 Route::get('/event', 'HomeController@event')->name('event');
 Route::get('/event/{id}', 'HomeController@showEvent')->name('show-event');
-Route::get('/warta-jemaat', 'HomeController@wartaJemaat')->name('warta-jemaat');
-Route::get('/warta-jemaat/{id}', 'HomeController@showWartaJemaat')->name('show-warta-jemaat');
-Route::get('/warta-umum', 'HomeController@wartaUmum')->name('warta-umum');
-Route::get('/warta-umum/{id}', 'HomeController@showWartaUmum')->name('show-warta-umum');
+Route::get('/warta', 'HomeController@warta')->name('warta');
+Route::get('/warta/{id}', 'HomeController@showWarta')->name('show-warta');
 Route::get('/about/{page}', 'HomeController@showMenuAbout')->name('about');
 Route::post('/contact-form/send', 'HomeController@sendMailContact')->name('send-contact-form');
 Route::post('/search/autocomplete', 'HomeController@searchSuggestions')->name('search-autocomplete');
 
-Route::prefix('admin')->middleware(['auth', 'web'])->group(function () {
-    Route::resource('/', 'Admin\HomeController');
-    Route::resource('/jemaat', 'Admin\JemaatController');
-    Route::resource('/article', 'Admin\ArticleController');
-    Route::resource('/profile', 'Admin\UserController');
-    Route::resource('/gallery', 'Admin\FileController');
-    Route::resource('/warta', 'Admin\WartaController');
-    Route::resource('/calendar', 'Admin\CalendarController');
-    Route::get('/change-password', 'Admin\UserController@showFormChangePassword')->name('change-password');
-    Route::post('/change-password', 'Admin\UserController@changePassword')->name('submit-change-password');
-    Route::get('/download', 'Admin\JemaatController@getDownload')->name('download-file');
-    Route::get('/article/create', 'Admin\ArticleController@newArticle')->name('new-article');
-    Route::put('/gallery/setThumbnail/{id}', 'Admin\CalendarController@setThumbnail')->name('set-thumbnail');
+Route::prefix('admin')->middleware(['auth', 'web'])->namespace('Admin')->group(function () {
+    Route::resource('/article', 'ArticleController');
+    Route::middleware('role:admin')->group(function () {
+        Route::resource('/', 'HomeController');
+        Route::resource('/jemaat', 'JemaatController');
+        Route::resource('/profile', 'UserController');
+        Route::resource('/gallery', 'FileController');
+        Route::resource('/warta', 'WartaController');
+        Route::resource('/calendar', 'CalendarController');
+        Route::resource('/kontributor', 'ContributorController');
+        Route::get('/change-password', 'UserController@showFormChangePassword')->name('change-password');
+        Route::post('/change-password', 'UserController@changePassword')->name('submit-change-password');
+        Route::get('/download', 'JemaatController@getDownload')->name('download-file');
+        Route::put('/gallery/setThumbnail/{id}', 'CalendarController@setThumbnail')->name('set-thumbnail');
+    });
 
     /* Ajax from Admin Dashboard */
     Route::any('/ajax/{page}', function ($page) {

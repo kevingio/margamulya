@@ -198,46 +198,13 @@ class HomeController extends Controller
     }
 
     /**
-     * Show the warta jemaat page
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function wartaJemaat()
-    {
-        $wartas = $this->warta->with('user')->where('type', 'jemaat')->orderBy('created_at', 'desc')->simplePaginate(15);
-        return view('web.warta-jemaat.index')
-                ->with('latest_articles', $this->latest_articles)
-                ->with('calendars', $this->calendars)
-                ->with('wartas', $wartas);
-    }
-
-    /**
-     * Show detail warta jemaat
-     *
-     * @param integer $id
-     * @return \Illuminate\Http\Response
-     */
-    public function showWartaJemaat($id)
-    {
-        $warta = $this->warta->find($id);
-        $warta->path = Storage::url($warta->path);
-        $wartas = $this->warta->with('user')->where('type', 'jemaat')->where('id', '!=', $id)->orderBy('created_at', 'desc')->take(15)->get();
-        return view('web.warta-jemaat.detail')
-                ->with('latest_articles', $this->latest_articles)
-                ->with('calendars', $this->calendars)
-                ->with('warta', $warta)
-                ->with('wartas', $wartas)
-                ->with('isMobile', $this->isMobile);
-    }
-
-    /**
      * Show the warta umum page
      *
      * @return \Illuminate\Http\Response
      */
-    public function wartaUmum()
+    public function warta()
     {
-        $wartas = $this->warta->with('user')->where('type', 'umum')->orderBy('created_at', 'desc')->simplePaginate(15);
+        $wartas = $this->warta->with('user')->latest()->simplePaginate(15);
         return view('web.warta-umum.index')
                 ->with('latest_articles', $this->latest_articles)
                 ->with('calendars', $this->calendars)
@@ -250,14 +217,13 @@ class HomeController extends Controller
      * @param integer $id
      * @return \Illuminate\Http\Response
      */
-    public function showWartaUmum($id)
+    public function showWarta($id)
     {
         $warta = $this->warta->find($id);
         $warta->path = Storage::url($warta->path);
         $wartas = $this->warta->with('user')
-                                ->where('type', 'umum')
                                 ->where('id', '!=', $id)
-                                ->orderBy('created_at', 'desc')
+                                ->latest()
                                 ->take(15)
                                 ->get();
         return view('web.warta-umum.detail')

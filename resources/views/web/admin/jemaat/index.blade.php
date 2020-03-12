@@ -8,7 +8,7 @@
 
 <!-- Modal Tambah Jemaat -->
 <div class="modal fade" id="add-jemaat-modal" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <form id="form-add-jemaat">
                 <div class="modal-header">
@@ -116,7 +116,7 @@
 
 <!-- Modal Edit Jemaat -->
 <div class="modal fade" id="edit-jemaat-modal" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <form id="form-edit-jemaat">
                 <div class="modal-header">
@@ -224,7 +224,7 @@
 
 <!-- Modal Import Excel Jemaat -->
 <div class="modal fade" id="import-jemaat-modal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <form class="" action="{{ route('jemaat.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="modal-content">

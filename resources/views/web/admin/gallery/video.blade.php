@@ -8,7 +8,7 @@
 
 <!-- Modal Add Video -->
 <div class="modal fade" id="add-video-modal" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <form id="form-add-video">
                 <div class="modal-header">
@@ -48,7 +48,7 @@
 
 <!-- Modal Edit Video -->
 <div class="modal fade" id="edit-video-modal" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <form id="form-edit-video">
                 <div class="modal-header">
@@ -88,7 +88,7 @@
 
 <!-- Modal Preview Video -->
 <div class="modal fade" id="preview-video-modal" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Preview Video</h5>

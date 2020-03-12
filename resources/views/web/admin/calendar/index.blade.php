@@ -8,7 +8,7 @@
 
 <!-- Modal Add Event -->
 <div class="modal fade" id="add-event-modal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <form id="form-add-event" method="post">
                 <div class="modal-header">
@@ -60,7 +60,7 @@
 
 <!-- Modal Edit Event -->
 <div class="modal fade" id="edit-event-modal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <form id="form-edit-event" method="post">
                 <div class="modal-header">
@@ -112,7 +112,7 @@
 
 <!-- Modal Preview Photo -->
 <div class="modal fade" id="img-preview-modal" role="dialog" aria-hidden="true">
-    <div class="modal-dialog h-100 d-flex flex-column justify-content-center my-0" role="document">
+    <div class="modal-dialog modal-dialog-centered h-100 d-flex flex-column justify-content-center my-0" role="document">
         <div class="modal-content">
             <img src="" class="img-preview" alt="preview" />
         </div>
@@ -128,10 +128,6 @@
                         <h4 class="mb-4">Calendar</h4>
                     </div>
                     <div class="col-md-7 text-sm-center text-md-right">
-                        <select class="form-control filter-calendar" id="select-type">
-                            <option value="calendar">Future Event</option>
-                            <option value="event">Past Event</option>
-                        </select>
                         <button class="btn btn-success" data-toggle="modal" data-target="#add-event-modal">
                             <i class="mdi mdi-plus"></i>
                             Add New

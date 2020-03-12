@@ -15,12 +15,20 @@
                         <h4 class="mb-4">All Articles</h4>
                     </div>
                     <div class="col-md-7 text-sm-center text-md-right">
-                        <a class="btn btn-success" href="{{ route('new-article') }}">
+                        <a class="btn btn-success" href="{{ url('/admin/article/create') }}">
                             <i class="mdi mdi-plus"></i>
                             Create Article
                         </a>
                     </div>
                 </div>
+                @if(auth()->user()->role === 'admin')
+                <select class="select2 pr-2" id="select-type">
+                    <option value="all">Semua Artikel</option>
+                    @foreach ($articleTypes as $type)
+                        <option value="{{ $type->id }}">{{ $type->name }}</option>
+                    @endforeach
+                </select>
+                @endif
                 <div class="table-responsive">
                     <table class="table table-striped" id="article-datatable">
                         <thead>

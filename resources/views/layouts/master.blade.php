@@ -10,7 +10,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        @if(Request::is('article/*') || Request::is('event/*') || Request::is('warta-umum/*') || Request::is('warta-jemaat/*') || Request::is('search/*'))
+        @if(request()->is('article/*') || request()->is('event/*') || request()->is('warta/*') || request()->is('search/*'))
         <link rel="stylesheet" type="text/css" href="{{ asset('css/article.css') }}">
         @else
         <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
@@ -24,7 +24,7 @@
     	@include('layouts.parts.footer')
     </div>
 
-    @if(Request::is('article/*') || Request::is('event/*') || Request::is('warta-umum/*') || Request::is('warta-jemaat/*') || Request::is('search/*'))
+    @if(request()->is('article/*') || request()->is('event/*') || request()->is('warta/*') || request()->is('search/*'))
     <script src="{{ asset('js/article.js') }}"></script>
     @else
     <script src="{{ asset('js/app.js') }}"></script>

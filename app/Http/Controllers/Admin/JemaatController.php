@@ -33,7 +33,7 @@ class JemaatController extends Controller
      */
     public function create()
     {
-        //
+        abort(404);
     }
 
     /**
@@ -69,8 +69,7 @@ class JemaatController extends Controller
                 ]);
             }
         }
-        // return response()->json($data);
-        return response()->json(['status', 200]);
+        return response()->json(['status' => 200]);
     }
 
     /**
@@ -93,7 +92,7 @@ class JemaatController extends Controller
      */
     public function edit($id)
     {
-        //
+        abort(404);
     }
 
     /**

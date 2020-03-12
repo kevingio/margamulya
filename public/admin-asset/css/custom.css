@@ -229,3 +229,7 @@ iframe.video-preview, div[aria-label='Showing viewer.'] {
 .sidebar .nav .nav-item.nav-profile .nav-link .user-wrapper .profile-image img {
     height: 100%;
 }
+
+.btn-group {
+    border: 0 solid transparent;
+}

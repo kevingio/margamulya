@@ -21,7 +21,7 @@ class WartaController extends Controller
      */
     public function index()
     {
-        //
+        abort(404);
     }
 
     /**
@@ -31,7 +31,7 @@ class WartaController extends Controller
      */
     public function create()
     {
-        //
+        abort(404);
     }
 
     /**

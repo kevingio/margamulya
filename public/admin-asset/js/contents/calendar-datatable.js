@@ -9,13 +9,14 @@ $(document).ready(function () {
 	var calendarPage = {
 		dtTable: {},
 		init: function () {
+			this.initDatatable();
+			$('.select2').select2({ width: '180px'});
 			$(document).on('click', 'img.img-thumbnail', function () {
 				$('#img-preview-modal img').attr('src', $(this).attr('src'));
 				$('#img-preview-modal').modal('show');
 			});
 
 			var data_id = '';
-			this.initDatatable();
             $('#calendar-datatable_wrapper').removeClass('container-fluid');
             $('table.table').css('width', '100%');
 
@@ -101,6 +102,7 @@ $(document).ready(function () {
 		initDatatable: function () {
 			$table = $page.find('#calendar-datatable');
 			calendarPage.dtTable = $table.DataTable({
+				"dom": '<"toolbar">frtip',
 				"aaSorting": [],
 		        "processing": true,
 	            "serverSide": true,
@@ -127,7 +129,13 @@ $(document).ready(function () {
 	                { targets: 'no-search', searchable: false },
 					{ targets: 'text-center', className: 'text-center' },
 	            ],
-		    });
+			});
+			
+			var filterHTML = '<select class="select2" id="select-type">' +
+				'<option value="calendar"> Future Event</option>' +
+				'<option value="event">Past Event</option>' +
+				'</select >';
+			$("div.toolbar").html(filterHTML);
 		}
 	};
 
