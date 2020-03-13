@@ -31,16 +31,16 @@ Route::post('/search/autocomplete', 'HomeController@searchSuggestions')->name('s
 
 Route::prefix('admin')->middleware(['auth', 'web'])->namespace('Admin')->group(function () {
     Route::resource('/article', 'ArticleController');
+    Route::resource('/profile', 'UserController');
+    Route::get('/change-password', 'UserController@showFormChangePassword')->name('change-password');
+    Route::post('/change-password', 'UserController@changePassword')->name('submit-change-password');
     Route::middleware('role:admin')->group(function () {
         Route::resource('/', 'HomeController');
         Route::resource('/jemaat', 'JemaatController');
-        Route::resource('/profile', 'UserController');
         Route::resource('/gallery', 'FileController');
         Route::resource('/warta', 'WartaController');
         Route::resource('/calendar', 'CalendarController');
         Route::resource('/kontributor', 'ContributorController');
-        Route::get('/change-password', 'UserController@showFormChangePassword')->name('change-password');
-        Route::post('/change-password', 'UserController@changePassword')->name('submit-change-password');
         Route::get('/download', 'JemaatController@getDownload')->name('download-file');
         Route::put('/gallery/setThumbnail/{id}', 'CalendarController@setThumbnail')->name('set-thumbnail');
     });
