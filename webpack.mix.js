@@ -48,6 +48,7 @@ mix.scripts([
         'public/admin-asset/vendors/sweetalert/sweetalert.min.js',
         'public/app-asset/js/category.js',
         'public/app-asset/js/search-autocomplete.js',
+        'public/admin-asset/vendors/select2/select2.min.js',
         'public/app-asset/js/custom.js'
     ], 'public/js/app.js')
     .styles([
@@ -59,6 +60,7 @@ mix.scripts([
         'public/app-asset/plugins/jquery.mb.YTPlayer-3.1.12/jquery.mb.YTPlayer.css',
         'public/app-asset/css/category.css',
         'public/app-asset/css/category_responsive.css',
+        'public/admin-asset/vendors/select2/select2.min.css',
         'public/app-asset/css/custom.css'
     ], 'public/css/app.css')
     .scripts([

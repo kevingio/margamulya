@@ -10367,6 +10367,24 @@ $('a.page-link[rel="next"]').text('Next');
 $('a.page-link[rel="prev"]').text('Previous');
 
 $(document).ready(function () {
+    $('.select2.filter-article').select2({ width: '220px' });
+
+    // set filter by query param for article
+    const urlParams = new URLSearchParams(window.location.search);
+    const filter = urlParams.get('filter');
+    if (filter) {
+        $('.select2.filter-article').val(filter).trigger('change');
+    }
+
+    $('.filter-article').on('change', function () {
+        const value = $(this).val();
+        if (value == 'all') {
+            window.location.assign(window.location.pathname)
+        } else {
+            window.location.assign(`${window.location.pathname}?filter=${value}`)
+        }
+    });
+
     $('.tab-list-direktori .tab-item').on('click', function () {
         $('.tab-list-direktori .tab-item').removeClass('active');
         $(this).addClass('active');

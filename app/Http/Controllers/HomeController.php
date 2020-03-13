@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use Jenssegers\Agent\Agent;
 use App\Models\Article;
 use App\Models\ArticleView;
+use App\Models\ContributorType;
 use App\Models\Jemaat;
 use App\Models\Calendar;
 use App\Models\Warta;
@@ -20,7 +21,7 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct(Article $article, Jemaat $jemaat, Calendar $calendar, Warta $warta, File $file, ArticleView $article_view, Agent $agent)
+    public function __construct(Article $article, Jemaat $jemaat, Calendar $calendar, Warta $warta, File $file, ArticleView $article_view, Agent $agent, ContributorType $contributorType)
     {
         $articles = $article->with('user')->orderBy('created_at', 'desc')->take(15)->get();
         $this->latest_articles = $this->latestArticles($articles);
@@ -32,6 +33,7 @@ class HomeController extends Controller
         $this->event = $calendar;
         $this->article_view = $article_view;
         $this->isMobile = $agent->isMobile();
+        $this->contributorType = $contributorType;
     }
 
     /**
@@ -102,9 +104,18 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function article()
+    public function article(Request $request)
     {
-        $articles = $this->article->with('user')->orderBy('created_at', 'desc')->simplePaginate(15);
+        $articleTypes = $this->contributorType;
+        $articles = $this->article->whereHas('user', function ($query) use ($request, $articleTypes) {
+                                    if ($request->has('filter')) {
+                                        $type = $articleTypes->where('slug_name', $request->filter)->first();
+                                        $query->where('contributor_type_id', $type->id);
+                                    }
+                                })
+                                ->with('user')
+                                ->latest()
+                                ->simplePaginate(15);
         foreach ($articles as $article) {
             if(!empty($article->background_img)) {
                 $article->background_img = Storage::url($article->background_img);
@@ -113,7 +124,8 @@ class HomeController extends Controller
         return view('web.article.index')
                 ->with('latest_articles', $this->latest_articles)
                 ->with('articles', $articles)
-                ->with('calendars', $this->calendars);
+                ->with('calendars', $this->calendars)
+                ->with('articleTypes', $articleTypes->get());
     }
 
     /**

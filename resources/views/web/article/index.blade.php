@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('page-title')
-    GPIP Margamulya
+    Article - GPIP Margamulya
 @endsection
 
 @section('content')
@@ -16,8 +16,18 @@
                     <div class="category">
                         <div class="section_panel d-flex flex-row align-items-center justify-content-start">
                             <div class="section_title">Articles</div>
+                            <div class="d-flex w-100"></div>
+                            <select class="select2 filter-article" id="filter-article">
+                                <option value="all">Semua Artikel</option>
+                                @foreach ($articleTypes as $type)
+                                <option value="{{ str_slug($type->name) }}">{{ $type->name }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="section_content clearfix">
+                            @if(sizeof($articles) == 0)
+                            <span>No records</span>
+                            @endif
                             <div id="grid" data-columns>
                                 @foreach($articles as $article)
                                     @if(!empty($article->background_img))

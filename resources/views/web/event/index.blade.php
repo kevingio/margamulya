@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('page-title')
-    GPIP Margamulya
+    Event - GPIP Margamulya
 @endsection
 
 @section('content')
@@ -18,6 +18,9 @@
                             <div class="section_title">Events</div>
                         </div>
                         <div class="section_content clearfix">
+                            @if(sizeof($events) == 0)
+                            <span>No records</span>
+                            @endif
                             <div id="grid" data-columns>
                                 @foreach($events as $event)
                                 @if($event->thumbnail)

@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('page-title')
-    GPIB Margamulya
+    Warta - GPIB Margamulya
 @endsection
 
 @section('content')
@@ -15,9 +15,12 @@
                 <div class="main_content">
                     <div class="category">
                         <div class="section_panel d-flex flex-row align-items-center justify-content-start">
-                            <div class="section_title">Warta Umum</div>
+                            <div class="section_title">Warta</div>
                         </div>
                         <div class="section_content clearfix">
+                            @if(sizeof($wartas) == 0)
+                            <span>No records</span>
+                            @endif
                             <div id="grid" data-columns>
                                 @foreach($wartas as $warta)
                                 <div class="card card_default card_small_no_image grid-item">

@@ -400,3 +400,36 @@ input.form-control {
 .author_image div img {
     height: 100%;
 }
+
+.select2-container--default .select2-selection--single {
+    font-size: 14px;
+    color: #495057;
+    border: 1px solid #f2f2f2;
+    padding: 0.3rem 0.75rem;
+    height: auto;
+}
+
+.select2-results__option.select2-results__option--highlighted {
+    background-color: #28a745 !important;
+}
+
+.select2-dropdown, .select2-container--default .select2-search--dropdown .select2-search__field {
+    border: 1px solid #f2f2f2;
+}
+
+.select2-container--default .select2-search--dropdown .select2-search__field {
+    color: #495057;
+    font-size: 14px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 100%;
+}
+
+.select2-container .select2-selection--single .select2-selection__rendered {
+    padding: 0;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__clear {
+    margin-right: 10px;
+}

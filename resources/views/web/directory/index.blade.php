@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('page-title')
-    GPIB Margamulya
+    Directory - GPIB Margamulya
 @endsection
 
 @section('content')

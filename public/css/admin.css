@@ -33065,13 +33065,13 @@ ul {
     padding: 0;
 }
 
+.select2-container--default .select2-selection--single .select2-selection__clear {
+    margin-right: 10px;
+}
+
 iframe.video-preview, div[aria-label='Showing viewer.'] {
     width: 100%;
     height: 300px;
-}
-
-.select2-container--default .select2-selection--single .select2-selection__clear {
-    margin-right: 10px;
 }
 
 .img-preview {

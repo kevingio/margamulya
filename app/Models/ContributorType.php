@@ -12,6 +12,6 @@ class ContributorType extends Model
      * @var array
      */
     protected $fillable = [
-        'name'
+        'name', 'slug_name'
     ];
 }

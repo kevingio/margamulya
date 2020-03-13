@@ -16,6 +16,7 @@ class CreateContributorTypesTable extends Migration
         Schema::create('contributor_types', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('slug_name');
             $table->timestamps();
         });
     }
