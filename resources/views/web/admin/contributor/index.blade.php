@@ -99,6 +99,12 @@ Kontributor - GPIB Margamulya
                                 required>
                         </div>
                     </div>
+                    <div class="form-group row">
+                        <label class="col-sm-5 col-form-label">Password</label>
+                        <div class="col-sm-7">
+                            <input type="password" name="password" class="form-control" autocomplete="off" placeholder="kosongkan jika tidak ingin diganti">
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-dark" data-dismiss="modal">

@@ -6,10 +6,11 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Yajra\Datatables\Datatables;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -58,6 +59,7 @@ class User extends Authenticatable
                     </button>
                     <div class="dropdown-menu datatable-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item edit" href="javascript:void(0)">Edit</a>
+                        <a class="dropdown-item text-danger delete" href="javascript:void(0)">Delete</a>
                     </div>
                 </div>';
                 return $html;

@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->unsignedInteger('contributor_type_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

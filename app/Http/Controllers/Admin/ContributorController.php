@@ -47,6 +47,13 @@ class ContributorController extends Controller
     {
         $data = $request->all();
         $data['password'] = bcrypt($data['password']);
+        $usernameCheck = $this->contributor->where('username', $data['username'])->count() > 0;
+        if ($usernameCheck) {
+            return response()->json([
+                'status' => 400,
+                'message' => 'Username is exist, please use another username'
+            ]);
+        }
         $this->contributor->updateOrCreate($data, [
             'name' => $data['name']
         ]);
@@ -86,7 +93,20 @@ class ContributorController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->all();
-        $this->contributor->findOrFail(decrypt($id))->update($data);
+        $contributor = $this->contributor->findOrFail(decrypt($id));
+        if (strtolower($contributor->username) != strtolower($data['username'])) {
+            $usernameCheck = $this->contributor->where('username', $data['username'])->count() > 0;
+            if ($usernameCheck) {
+                return response()->json([
+                    'status' => 400,
+                    'message' => 'Username is exist, please use another username'
+                ]);
+            }
+        }
+        if ($request->has('password')) {
+            $data['password'] = bcrypt($data['password']);
+        }
+        $contributor->update($data);
         return response()->json(['status' => 200]);
     }
 
@@ -98,9 +118,7 @@ class ContributorController extends Controller
      */
     public function destroy($id)
     {
-        $data = $request->all();
-        $data['password'] = bcrypt($data['password']);
-        $this->contributor->findOrFail($id)->delete();
+        $this->contributor->findOrFail(decrypt($id))->delete();
         return response()->json(['status' => 200]);
     }
 

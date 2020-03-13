@@ -20,14 +20,22 @@ $(document).ready(function () {
                 $(this).find("input, textarea").val('');
                 $.post('/admin/kontributor', data)
                     .done(function (response) {
-                        $('button.close').click();
-                        $('#form-add-contributor .select2').val(null).trigger('change');
-                        contributorPage.dtTable.ajax.reload(null, false);
-                        swal({
-                            title: "Success!",
-                            text: "Data has been added!",
-                            icon: "success"
-                        });
+                        if (response.status == 200) {
+                            $('button.close').click();
+                            $('#form-add-contributor .select2').val(1).trigger('change');
+                            contributorPage.dtTable.ajax.reload(null, false);
+                            swal({
+                                title: "Success!",
+                                text: "Data has been added!",
+                                icon: "success"
+                            });
+                        } else {
+                            swal({
+                                title: "Error!",
+                                text: `${response.message}!`,
+                                icon: "error"
+                            });
+                        }
                     });
             });
 
@@ -77,15 +85,23 @@ $(document).ready(function () {
                     data: data,
                     type: 'PUT',
                     success: function (response) {
-                        $(this).find("input, textarea").val('');
-                        $('button.close').click();
-                        $('#form-edit-contributor .select2').val(null).trigger('change');
-                        contributorPage.dtTable.ajax.reload(null, false);
-                        swal({
-                            title: "Success!",
-                            text: "Data has been edited!",
-                            icon: "success"
-                        });
+                        if (response.status == 200) {
+                            $(this).find("input, textarea").val('');
+                            $('button.close').click();
+                            $('#form-edit-contributor .select2').val(1).trigger('change');
+                            contributorPage.dtTable.ajax.reload(null, false);
+                            swal({
+                                title: "Success!",
+                                text: "Data has been edited!",
+                                icon: "success"
+                            });
+                        } else {
+                            swal({
+                                title: "Error!",
+                                text: `${response.message}!`,
+                                icon: "error"
+                            });
+                        }
                     }
                 });
             });
