@@ -54,9 +54,7 @@ class ContributorController extends Controller
                 'message' => 'Username is exist, please use another username'
             ]);
         }
-        $this->contributor->updateOrCreate($data, [
-            'name' => $data['name']
-        ]);
+        $this->contributor->create($data);
         return response()->json(['status' => 200]);
     }
 
