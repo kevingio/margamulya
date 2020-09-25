@@ -232,7 +232,7 @@ class HomeController extends Controller
     public function showWarta($id)
     {
         $warta = $this->warta->find($id);
-        $warta->path = Storage::url($warta->path);
+        $warta->path = $warta->path ? Storage::url($warta->path) : null;
         $wartas = $this->warta->with('user')
                                 ->where('id', '!=', $id)
                                 ->latest()
