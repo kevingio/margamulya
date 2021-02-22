@@ -11,9 +11,9 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         @if(request()->is('article/*') || request()->is('event/*') || request()->is('warta/*') || request()->is('search/*'))
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/article.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ mix('css/article.css') }}">
         @else
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ mix('css/app.css') }}">
         @endif
     </head>
     <body>
@@ -25,9 +25,9 @@
     </div>
 
     @if(request()->is('article/*') || request()->is('event/*') || request()->is('warta/*') || request()->is('search/*'))
-    <script src="{{ asset('js/article.js') }}"></script>
+    <script src="{{ mix('js/article.js') }}"></script>
     @else
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ mix('js/app.js') }}"></script>
     @endif
     </body>
 </html>
