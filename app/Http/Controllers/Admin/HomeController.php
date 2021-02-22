@@ -52,7 +52,7 @@ class HomeController extends Controller
             'system' => 0.20
         ];
         $isMobile = $this->agent->isMobile();
-        return view('web.admin.dashboard.index', compact('count', 'photo_storage', 'storage', 'visitors', 'birthday', 'anniversary', 'isMobile'));
+        return view('web.admin.dashboard.index', compact('count', 'storage', 'visitors', 'birthday', 'anniversary', 'isMobile'));
     }
 
     /**
